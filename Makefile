@@ -11,7 +11,7 @@ window: main.o
 	$(CC) -o ./build/window.out main.o $(CFLAGS)
 
 sq: square
-	./square.out
+	./build/square.out
 
 square: square.o
 	mkdir -p build
