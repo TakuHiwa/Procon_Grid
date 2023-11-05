@@ -3,13 +3,21 @@ CFLAGS=-lglut -lGLU -lGL
 SRCS=$(wildcard *.cpp)
 OBJS=$(SRCS:.c=.o)
 
-tt:	window
-	./window
+wn:	window
+	./build/window.out
 
-window: $(OBJS)
-	$(CC) -o window $(OBJS) $(CFLAGS)
+window: main.o
+	mkdir -p build
+	$(CC) -o ./build/window.out main.o $(CFLAGS)
+
+sq: square
+	./square.out
+
+square: square.o
+	mkdir -p build
+	g++ square.o -o ./build/square.out -lglut -lGLU -lGL
 
 clean:
-		rm -f window *.o 
+		rm -rf ./build *.o 
 
 .PHONY: test clean
